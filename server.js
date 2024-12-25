@@ -1,12 +1,12 @@
 const API_key = "b12624dd5e1945192f57ac1b41582e9e"
-const API_URL= "https://api.openweathermap.org/data/2.5/weather?q=gabes&appid=b12624dd5e1945192f57ac1b41582e9e&units=metric"
+const API_URL= "https://api.openweathermap.org/data/2.5/weather?&units=metric&q="
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city) {
-    const response = await fetch(API_URL + city + `&appid = ${API_key}`);
+    const response = await fetch(API_URL+city+`&appid=${API_key}`);
     var data = await response.json();
     console.log(data);
 
@@ -36,4 +36,4 @@ async function checkWeather(city) {
 searchBtn.addEventListener("click", () => {
     checkWeather(searchBox.value);
 })
-checkWeather(city);
+// checkWeather(city);
