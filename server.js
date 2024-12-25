@@ -15,6 +15,7 @@ async function checkWeather(city) {
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%"; 
     document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
 
+    // weather status icons
     if(data.weather[0].main == "Clouds") {
         weatherIcon.src = "https://www.svgrepo.com/show/276635/cloudy-cloud.svg"
     }
@@ -33,7 +34,14 @@ async function checkWeather(city) {
     else (weatherIcon.src = "https://www.svgrepo.com/show/407540/sun.svg")  // clear weather → svg = sun
 }
 
+// clicking option
 searchBtn.addEventListener("click", () => {
     checkWeather(searchBox.value);
 })
-// checkWeather(city);
+// enter key option
+searchBox.addEventListener("keypress", function(event) {
+    if(event.key=="Enter")
+        checkWeather(searchBox.value);
+})
+
+checkWeather(city);
